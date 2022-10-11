@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func sleepItOff(d time.Duration) {
+func SleepItOff(d time.Duration) {
 	rand.Seed(time.Now().UTC().UnixNano())
 	rd := rand.Int63n(int64(d))
 	time.Sleep(time.Duration(rd))

@@ -1,4 +1,4 @@
-package aliUtils
+package aliU
 
 // // https://github.com/golang/example/blob/master/stringutil/reverse.go#L21
 // func reverse(s string) string {

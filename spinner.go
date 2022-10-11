@@ -1,4 +1,4 @@
-package aliUtils
+package aliU
 
 var spinniThings = []string{"|", "/", "-", "\\"}
 

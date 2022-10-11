@@ -1,4 +1,4 @@
-package aliUtils
+package aliU
 
 func ContainsString(s string, a []string) bool {
 	r := false

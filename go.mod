@@ -1,4 +1,4 @@
-module github.com/alimoeeny/ali_utils
+module github.com/alimoeeny/aligoutils
 
 go 1.18
 

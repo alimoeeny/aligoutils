@@ -30,6 +30,37 @@ func MinInt(a, b int) int {
 	return b
 }
 
+func MeanInt64(a []int64) float64 {
+	if len(a) < 1 {
+		return 0.0
+	}
+	agg := 0.0
+	for _, f := range a {
+		agg += float64(f)
+	}
+	return agg / float64(len(a))
+}
+
+// it returns the median of a slice of int64
+// it returns float64 because sometimes the median is not an int
+func MedianInt64(input []int64) (median float64) {
+	c := SortableInt64Array(input)
+	sort.Sort(c)
+
+	// No math is needed if there are no numbers
+	// For even numbers we add the two middle numbers
+	// and divide by two using the mean function above
+	// For odd numbers we just use the middle number
+	l := len(c)
+	if l == 0 {
+		return 0.0
+	} else if l%2 == 0 {
+		return MeanInt64(c[l/2-1 : l/2+1])
+	} else {
+		return float64(c[l/2])
+	}
+}
+
 func MeanFloat64(a []float64) float64 {
 	if len(a) < 1 {
 		return 0.0

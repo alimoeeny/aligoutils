@@ -46,6 +46,16 @@ func StringArraysHaveSameElements(a, b []string) bool {
 	return true
 }
 
+type SortableInt64Array []int64
+
+func (a SortableInt64Array) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
+func (a SortableInt64Array) Len() int {
+	return len(a)
+}
+func (a SortableInt64Array) Less(i, j int) bool {
+	return a[i] < a[j]
+}
+
 type SortableFloat64Array []float64
 
 func (a SortableFloat64Array) Swap(i, j int) { a[i], a[j] = a[j], a[i] }

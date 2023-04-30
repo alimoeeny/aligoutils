@@ -65,6 +65,60 @@ func Test_StringArraysHaveSameElements(t *testing.T) {
 
 }
 
+func Test_MeanInt64(t *testing.T) {
+	RegisterTestingT(t)
+
+	{
+		var a []int64
+		Expect(MeanInt64(a)).To(Equal(0.0))
+	}
+	{
+		a := []int64{}
+		Expect(MeanInt64(a)).To(Equal(0.0))
+	}
+	{
+		a := []int64{-1, 1}
+		Expect(MeanInt64(a)).To(Equal(0.0))
+	}
+	{
+		a := []int64{0, 1, 2}
+		Expect(MeanInt64(a)).To(Equal(1.0))
+	}
+	{
+		a := []int64{-1, 0, 1, 2, 3}
+		Expect(MeanInt64(a)).To(Equal(1.0))
+	}
+}
+
+func Test_MedianInt64(t *testing.T) {
+	RegisterTestingT(t)
+
+	{
+		var a []int64
+		Expect(MedianInt64(a)).To(Equal(0.0))
+	}
+	{
+		a := []int64{}
+		Expect(MedianInt64(a)).To(Equal(0.0))
+	}
+	{
+		a := []int64{-1, 1}
+		Expect(MedianInt64(a)).To(Equal(0.0))
+	}
+	{
+		a := []int64{0, 1, 2}
+		Expect(MedianInt64(a)).To(Equal(1.0))
+	}
+	{
+		a := []int64{-1, 0, 1, 2, 3}
+		Expect(MedianInt64(a)).To(Equal(1.0))
+	}
+	{
+		a := []int64{-1, 0, 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 100000}
+		Expect(MedianInt64(a)).To(Equal(3.0))
+	}
+}
+
 func Test_MeanFloat64(t *testing.T) {
 	RegisterTestingT(t)
 

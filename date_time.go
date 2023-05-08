@@ -5,6 +5,6 @@ import (
 	"time"
 )
 
-func DayStr() string {
-	return fmt.Sprintf("%04d_%02d_%02d", time.Now().Year(), time.Now().Month(), time.Now().Day())
+func DayStr(t time.Time) string {
+	return fmt.Sprintf("%04d_%02d_%02d", t.Year(), t.Month(), t.Day())
 }

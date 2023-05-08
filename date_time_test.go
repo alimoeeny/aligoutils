@@ -13,7 +13,7 @@ func Test_DayStr(t *testing.T) {
 	RegisterFailHandler(FastFail)
 
 	{
-		x := DayStr()
+		x := DayStr(time.Now())
 		y := strings.Split(x, "_")
 		fmt.Println(x)
 		Expect(len(y)).To(Equal(3))

@@ -89,7 +89,10 @@ func ContentTypeFromFileName(filename string) (string, error) {
 	}
 }
 
-func UniqueIDForBlob(blob []byte) string {
+func UniqueIDForBlob(blob []byte, PrependFolder bool) string {
 	shaSum := fmt.Sprintf("%x", sha256.Sum224(blob))
-	return fmt.Sprintf("sha224-%s.mp3", shaSum)
+	if PrependFolder {
+		return fmt.Sprintf("%s/sha224-s01-%s", shaSum[:5], shaSum)
+	}
+	return fmt.Sprintf("sha224-s01-%s", shaSum)
 }

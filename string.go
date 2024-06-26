@@ -26,3 +26,16 @@ func Reverse(input string) string {
 	output := string(rune)
 	return output
 }
+
+// ChunkString splits a string into chunks of the given size or smaller
+func ChunkString(s string, size int) []string {
+	var chunks = make([]string, 0)
+	for len(s) > size {
+		chunks = append(chunks, s[:size])
+		s = s[size:]
+	}
+	if len(s) > 0 {
+		chunks = append(chunks, s)
+	}
+	return chunks
+}

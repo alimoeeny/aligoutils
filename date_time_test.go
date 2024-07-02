@@ -2,6 +2,7 @@ package aliU
 
 import (
 	"fmt"
+	"math"
 	"strings"
 	"testing"
 	"time"
@@ -27,4 +28,26 @@ func Test_DayStr(t *testing.T) {
 		Expect(y[1]).To(Equal(fmt.Sprintf("%02d", time.Now().Month())))
 		Expect(y[2]).To(Equal(fmt.Sprintf("%02d", time.Now().Day())))
 	}
+}
+
+func Test_ParseDuration(t *testing.T) {
+	RegisterFailHandler(FastFail)
+
+	{
+		s := "3:21:34"
+		v, err := ParseDuration(s)
+		Expect(err).To(BeNil())
+		Expect(math.Round(v.Hours())).To(BeNumerically("==", 3.0))
+		Expect(math.Round(v.Minutes())).To(BeNumerically("==", 202))
+		Expect(math.Round(v.Seconds())).To(BeNumerically("==", 12094))
+	}
+	{
+		s := "18:45"
+		v, err := ParseDuration(s)
+		Expect(err).To(BeNil())
+		Expect(math.Round(v.Hours())).To(BeNumerically("==", 0))
+		Expect(math.Round(v.Minutes())).To(BeNumerically("==", 19))
+		Expect(math.Round(v.Seconds())).To(BeNumerically("==", 1125))
+	}
+
 }

@@ -35,6 +35,8 @@ func RandomString(length int, includeUpperCase bool, includeDigits bool) string 
 	if includeUpperCase {
 		sampleSpace += letterBytesUC
 	}
+	// so that we alwasys start with a letter not a digit
+	firstChar := sampleSpace[rand.Int63()%int64(len(sampleSpace))]
 	if includeDigits {
 		sampleSpace = sampleSpace + "0123456789"
 	}
@@ -42,6 +44,7 @@ func RandomString(length int, includeUpperCase bool, includeDigits bool) string 
 	for i := range b {
 		b[i] = sampleSpace[rand.Int63()%int64(len(sampleSpace))]
 	}
+	b[0] = firstChar
 	return string(b)
 }
 

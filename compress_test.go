@@ -13,7 +13,7 @@ func Test_SaveMarshalUnmarshal(t *testing.T) {
 	{
 		ogStr := "ALIIIIIII"
 
-		safeM, err := SafeMarshall(ogStr)
+		safeM, err := SafeMarshal(ogStr)
 		Expect(err).To(BeNil())
 
 		var back string
@@ -39,7 +39,7 @@ func Test_SaveMarshalUnmarshal(t *testing.T) {
 			3.141592,
 		}
 
-		safeM, err := SafeMarshall(ogStr)
+		safeM, err := SafeMarshal(ogStr)
 		Expect(err).To(BeNil())
 
 		var back someType

@@ -38,7 +38,7 @@ func Unzipb64(s string) (string, error) {
 	return string(uzBytes), err
 }
 
-func SafeMarshall(s interface{}) (string, error) {
+func SafeMarshal(s interface{}) (string, error) {
 	jsonData, err := json.Marshal(s)
 	if err != nil {
 		return "", err

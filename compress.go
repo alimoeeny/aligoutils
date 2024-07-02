@@ -7,6 +7,7 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"reflect"
 )
@@ -64,7 +65,42 @@ func SafeUnmarshal(encoded string, out interface{}) error {
 	if err != nil {
 		return err
 	}
-	decompressedData, err := ioutil.ReadAll(r)
+	decompressedData, err := io.ReadAll(r)
+	if err != nil {
+		return err
+	}
+
+	err = json.Unmarshal(decompressedData, &out)
+	return err
+}
+
+func SafeMarshalBytes(s interface{}) ([]byte, error) {
+	jsonData, err := json.Marshal(s)
+	if err != nil {
+		return nil, err
+	}
+	var b bytes.Buffer
+	gz := gzip.NewWriter(&b)
+	gz.Write(jsonData)
+	gz.Close()
+
+	return b.Bytes(), nil
+}
+
+func SafeUnmarshalBytes(compressedData []byte, out interface{}) error {
+	// Ensure out is a pointer
+	if reflect.ValueOf(out).Kind() != reflect.Ptr {
+		return fmt.Errorf("out parameter must be a pointer")
+	}
+
+	r, err := gzip.NewReader(bytes.NewReader(compressedData))
+	if err != nil {
+		return err
+	}
+	decompressedData, err := io.ReadAll(r)
+	if err != nil {
+		return err
+	}
 
 	err = json.Unmarshal(decompressedData, &out)
 	return err

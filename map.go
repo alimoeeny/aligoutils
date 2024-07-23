@@ -1,6 +1,6 @@
 package aliU
 
-func mergeMaps[T comparable, U any](a map[T]U, b map[T]U) map[T]U {
+func MergeMaps[T comparable, U any](a map[T]U, b map[T]U) map[T]U {
 	if a == nil {
 		a = map[T]U{}
 	}

@@ -18,8 +18,8 @@ func DotProductSimilarity(a, b []float64) (float64, error) {
 	}
 	d := float64(0)
 	for idx := range a {
-		if a[idx] > 1.0 || b[idx] > 1.0 || a[idx] < 0.0 || b[idx] < 0 {
-			return -1, fmt.Errorf("expected floats between 0 and 1 inclusive")
+		if a[idx] > 1.0 || b[idx] > 1.0 || a[idx] < -1.0 || b[idx] < -1.0 {
+			return -1, fmt.Errorf("expected floats between -1 and 1 inclusive")
 		}
 		d += a[idx] * b[idx]
 	}

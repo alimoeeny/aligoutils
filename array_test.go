@@ -233,5 +233,27 @@ func Test_UniqueArray(t *testing.T) {
 		Expect([]int{1, 3, 2}).To(ContainElements(UniqueArray(a)))
 		Expect(UniqueArray(a)).To(ContainElements([]int{1, 2, 3}))
 	}
+}
 
+func Test_Shuffle(t *testing.T) {
+	RegisterFailHandler(FastFail)
+
+	{
+		a := []int{}
+		b := Shuffle(a)
+		Expect(b).To(BeEmpty())
+	}
+
+	{
+		a := []int{1, 2, 3, 4, 5, 6}
+		b := Shuffle(a)
+		Expect(b).To(HaveLen(len(a)))
+		Expect(b).To(ContainElements(a))
+	}
+	{
+		a := []string{"1", "2", "3", "4", "5", "6"}
+		b := Shuffle(a)
+		Expect(b).To(HaveLen(len(a)))
+		Expect(b).To(ContainElements(a))
+	}
 }

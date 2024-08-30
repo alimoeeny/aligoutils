@@ -1,5 +1,7 @@
 package aliU
 
+import "math/rand"
+
 func ContainsString(s string, a []string) bool {
 	r := false
 	for _, i := range a {
@@ -91,4 +93,11 @@ func UniqueArray[K comparable](a []K) []K {
 		index++
 	}
 	return r
+}
+
+func Shuffle[K comparable](a []K) []K {
+	rand.Shuffle(len(a), func(i, j int) {
+		a[i], a[j] = a[j], a[i]
+	})
+	return a
 }

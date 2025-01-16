@@ -1,5 +1,11 @@
 package aliU
 
+import (
+	"strings"
+
+	"golang.org/x/text/unicode/norm"
+)
+
 // // https://github.com/golang/example/blob/master/stringutil/reverse.go#L21
 // func reverse(s string) string {
 // 	r := []rune(s)
@@ -38,4 +44,11 @@ func ChunkString(s string, size int) []string {
 		chunks = append(chunks, s)
 	}
 	return chunks
+}
+
+func CleanString(in string) string {
+	in = strings.TrimSpace(norm.NFC.String(in))
+	in = strings.ReplaceAll(in, "-", " ")
+	in = strings.ReplaceAll(in, "_", " ")
+	return in
 }

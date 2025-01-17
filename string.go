@@ -50,5 +50,9 @@ func CleanString(in string) string {
 	in = strings.TrimSpace(norm.NFC.String(in))
 	in = strings.ReplaceAll(in, "-", " ")
 	in = strings.ReplaceAll(in, "_", " ")
+	in = strings.ReplaceAll(in, ".", " ")
+	in = strings.ReplaceAll(in, "    ", " ")
+	in = strings.ReplaceAll(in, "   ", " ")
+	in = strings.ReplaceAll(in, "  ", " ")
 	return in
 }

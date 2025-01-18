@@ -64,3 +64,18 @@ func CleanString(in string) string {
 	}
 	return in
 }
+
+func CleanUrl(in string) string {
+	in = strings.TrimSpace(norm.NFC.String(in))
+	in = strings.TrimSuffix(in, "/")
+	in = strings.TrimSuffix(in, "\\")
+	in = strings.Trim(in, "\"")
+	in = strings.Trim(in, "'")
+	in = strings.ReplaceAll(in, "    ", " ")
+	in = strings.ReplaceAll(in, "   ", " ")
+	in = strings.ReplaceAll(in, "  ", " ")
+	if strings.ToLower(in) == "null" {
+		in = ""
+	}
+	return in
+}

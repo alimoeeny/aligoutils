@@ -54,5 +54,8 @@ func CleanString(in string) string {
 	in = strings.ReplaceAll(in, "    ", " ")
 	in = strings.ReplaceAll(in, "   ", " ")
 	in = strings.ReplaceAll(in, "  ", " ")
+	if strings.ToLower(in) == "null" {
+		in = ""
+	}
 	return in
 }

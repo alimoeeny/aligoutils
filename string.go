@@ -48,9 +48,14 @@ func ChunkString(s string, size int) []string {
 
 func CleanString(in string) string {
 	in = strings.TrimSpace(norm.NFC.String(in))
+	in = strings.TrimSuffix(in, "/")
+	in = strings.TrimSuffix(in, "\\")
+	in = strings.Trim(in, "\"")
+	in = strings.Trim(in, "'")
 	in = strings.ReplaceAll(in, "-", " ")
 	in = strings.ReplaceAll(in, "_", " ")
 	in = strings.ReplaceAll(in, ".", " ")
+	in = strings.ReplaceAll(in, ",", " ")
 	in = strings.ReplaceAll(in, "    ", " ")
 	in = strings.ReplaceAll(in, "   ", " ")
 	in = strings.ReplaceAll(in, "  ", " ")

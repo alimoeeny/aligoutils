@@ -28,9 +28,9 @@ func RandStr100(length int) string {
 // https://stackoverflow.com/questions/22892120/how-to-generate-a-random-string-of-a-fixed-length-in-go
 const letterBytesLC = "abcdefghijklmnopqrstuvwxyz"
 const letterBytesUC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+const specialByteUC = "!@#$%^&*{}<>"
 
 func RandomString(length int, includeUpperCase bool, includeDigits bool) string {
-	rand.Seed(time.Now().UTC().UnixNano())
 	sampleSpace := letterBytesLC
 	if includeUpperCase {
 		sampleSpace += letterBytesUC
@@ -52,7 +52,6 @@ func FancyRandStr(length int) string {
 	length = MinInt(length, 4096)
 	length = MaxInt(length, 1)
 	hash := sha512.New()
-	rand.Seed(time.Now().UTC().UnixNano())
 	str := ""
 	isNotLongEnough := true
 	for isNotLongEnough {
